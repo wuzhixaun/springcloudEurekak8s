@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: config-server
-        image: 192.168.100.249/study/config:1.0
+        image: 192.168.100.249/dnvip/config:1.0
         env:
         - name: AUTHOR
           value: config-server
