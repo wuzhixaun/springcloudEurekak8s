@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/xiaochunping/springcloudk8scfg.git
+          search-paths: config-repo
+server:
+  port: 12000
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      #defaultZone: http://eureka-server:7000/eureka/
+      defaultZone: http://localhost:7000/eureka/
