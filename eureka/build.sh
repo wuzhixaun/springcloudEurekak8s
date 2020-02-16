@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 mvn package
 
-docker build -t 192.168.100.249:/study/eureka:latest .
+docker build -t 192.168.100.249/study/eureka:latest .
