@@ -4,9 +4,13 @@ spring:
 server:
   port: 7000
 eureka:
+  instance:
+    hostname: 127.0.0.1
   client:
     service-url:
-      defaultZone: http://eureka-server:7000/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
       #defaultZone: http://localhost:7000/eureka/
+    # 是否从eureka上获取注册信息
     fetch-registry: false
+    # 表示是否注册自身到eureka服务器
     register-with-eureka: false
