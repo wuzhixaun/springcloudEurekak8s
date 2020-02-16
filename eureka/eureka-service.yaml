@@ -10,3 +10,23 @@ spec:
   type: NodePort
   selector:
     app: eureka
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: eureka
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: eureka
+    spec:
+      containers:
+        - name: eureka
+          image: 192.168.100.249/study/eureka:latest
+          env:
+            - name: AUTHOR
+              value: eureka
+          ports:
+            - containerPort: 7000

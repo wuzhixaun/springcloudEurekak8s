@@ -10,3 +10,23 @@ spec:
   type: NodePort
   selector:
     app: config-server
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: config-server
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: config-server
+    spec:
+      containers:
+        - name: config-server
+          image: 192.168.100.249/study/config:latest
+          env:
+            - name: AUTHOR
+              value: config-server
+          ports:
+            - containerPort: 12000
