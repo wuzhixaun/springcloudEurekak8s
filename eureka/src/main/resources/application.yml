@@ -1,16 +1,23 @@
-spring:
-  application:
-    name: eureka-server
 server:
   port: 7000
+
+#spring:
+#  application:
+#    name: eureka
+
 eureka:
   instance:
-    hostname: 127.0.0.1
+#    appname: ${spring.application.name}
+    prefer-ip-address: false
+#  server:
+#    enable-self-preservation: true
+#    #5秒清理一次
+#    eviction-interval-timer-in-ms: 5000
   client:
-    service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-      #defaultZone: http://localhost:7000/eureka/
+#    service-url:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+#      #defaultZone: http://localhost:7000/eureka/
     # 是否从eureka上获取注册信息
-    fetch-registry: false
+    fetch-registry: true
     # 表示是否注册自身到eureka服务器
-    register-with-eureka: false
+    register-with-eureka: true

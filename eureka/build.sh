@@ -2,6 +2,6 @@
 
 mvn package
 
-docker build -t 192.168.100.249/study/eureka:latest .
+docker build -t 192.168.100.249/k8s/eureka:latest .
 
-docker push 192.168.100.249/study/eureka:latest
+docker push 192.168.100.249/k8s/eureka:latest
