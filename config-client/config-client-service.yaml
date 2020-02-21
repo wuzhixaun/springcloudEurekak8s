@@ -24,7 +24,7 @@ spec:
       spec:
         containers:
           - name: config-client
-            image: 192.168.100.249/study/config-client:latest
+            image: 192.168.100.249/k8s/config-client:latest
             env:
               - name: AUTHOR
                 value: config-client
