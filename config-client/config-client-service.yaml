@@ -10,7 +10,7 @@ spec:
   type: NodePort
   selector:
     app: config-client
-  ---
+---
   apiVersion: extensions/v1beta1
   kind: Deployment
   metadata:
