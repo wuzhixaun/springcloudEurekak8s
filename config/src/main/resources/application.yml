@@ -12,7 +12,7 @@ server:
 eureka:
   instance:
     #以IP注册进eureka,不以ID注册
-    prefer-ip-address: true
+    #prefer-ip-address: true
   client:
     #注册到eureka为true
     register-with-eureka: true
