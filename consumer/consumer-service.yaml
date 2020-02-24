@@ -3,18 +3,19 @@ kind: Service
 metadata:
   name: consumer
 spec:
-  ports:
-    - port: 15000
-      protocol: TCP
-      targetPort: 15000
-  type: NodePort
   selector:
     app: consumer
+  ports:
+    - port: 15000
+      targetPort: 15000
+  type: NodePort
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: consumer
+  labels:
+    name: consumer
 spec:
   replicas: 1
   template:

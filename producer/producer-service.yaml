@@ -3,18 +3,19 @@ kind: Service
 metadata:
   name: producer
 spec:
-  ports:
-    - port: 14000
-      protocol: TCP
-      targetPort: 14000
-  type: NodePort
   selector:
     app: producer
+  ports:
+    - port: 14000
+      targetPort: 14000
+  type: NodePort
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: producer
+  labels:
+    name: producer
 spec:
   replicas: 1
   template:
