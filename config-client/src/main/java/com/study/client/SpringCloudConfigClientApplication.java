@@ -1,4 +1,4 @@
-package com.dongnaoedu.client;
+package com.study.client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

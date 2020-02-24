@@ -1,4 +1,4 @@
-package com.dongnaoedu.eureka;
+package com.study.eureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

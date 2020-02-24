@@ -1,18 +1,12 @@
 spring:
   application:
-    name: config-server
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/xiaochunping/springcloudk8scfg.git
-          search-paths: config-repo
+    name: consumer
 server:
-  port: 12000
+  port: 15000
 eureka:
   instance:
     #以IP注册进eureka,不以ID注册
-    #prefer-ip-address: true
+    prefer-ip-address: true
   client:
     #注册到eureka为true
     register-with-eureka: true
