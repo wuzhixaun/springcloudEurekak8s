@@ -5,18 +5,19 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/xiaochunping/springcloudk8scfg.git
+          #uri: https://github.com/xiaochunping/springcloudk8scfg.git
+          uri: https://gitee.com/xcp_allen/springcloudk8scfg.git
           search-paths: config-repo
 server:
   port: 12000
 eureka:
   instance:
     #以IP注册进eureka,不以ID注册
-    #prefer-ip-address: true
+    prefer-ip-address: true
   client:
     #注册到eureka为true
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      #defaultZone: http://eureka-0.eureka.default.svc.cluster.local:7000/eureka/,http://eureka-1.eureka.default.svc.cluster.local:7000/eureka/,http://eureka-2.eureka.default.svc.cluster.local:7000/eureka/
-      defaultZone: http://localhost:7000/eureka/
+      defaultZone: http://eureka-0.eureka.default.svc.cluster.local:7000/eureka/,http://eureka-1.eureka.default.svc.cluster.local:7000/eureka/,http://eureka-2.eureka.default.svc.cluster.local:7000/eureka/
+      #defaultZone: http://localhost:7000/eureka/
