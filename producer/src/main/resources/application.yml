@@ -13,4 +13,4 @@ eureka:
     fetch-registry: true
     service-url:
       #defaultZone: http://eureka-0.eureka.default.svc.cluster.local:7000/eureka/,http://eureka-1.eureka.default.svc.cluster.local:7000/eureka/,http://eureka-2.eureka.default.svc.cluster.local:7000/eureka/
-      defaultZone: http://localhost:7000/eureka/
+                     defaultZone: http://localhost:7000/eureka/
