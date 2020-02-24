@@ -32,6 +32,8 @@ spec:
         - name: producer
           image: 192.168.100.249/k8s/consumer:latest
           env:
+            - name: APP_NAME
+              value: "eureka"
             - name: APP_OPTS
               value: "--registerWithEureka=true
                       --fetchRegistry=true
