@@ -25,13 +25,13 @@ spec:
     spec:
       # 此处需要
       #kubectl create secret docker-registry registry-pull-secret --namespace=default \
-      #--docker-server=192.168.100.249 --docker-username=admin \
+      #--docker-server=192.168.1.100 --docker-username=admin \
       #--docker-password=Harbor12345 --docker-email=xcp.email@gmail.com
       imagePullSecrets:
         - name: registry-pull-secret
       containers:
         - name: producer
-          image: 192.168.100.249/k8s/producer:latest
+          image: 192.168.1.100/k8s/producer:latest
           env:
             - name: APP_NAME
               value: "eureka"

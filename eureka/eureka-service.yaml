@@ -47,13 +47,13 @@ spec:
       #terminationGracePeriodSeconds: 10    #当删除Pod时，等待时间
       # 此处需要
       #kubectl create secret docker-registry registry-pull-secret --namespace=default \
-      #--docker-server=192.168.100.249 --docker-username=admin \
+      #--docker-server=192.168.1.100 --docker-username=admin \
       #--docker-password=Harbor12345 --docker-email=xcp.email@gmail.com
       imagePullSecrets:
         - name: registry-pull-secret
       containers:
         - name: eureka
-          image: 192.168.100.249/k8s/eureka:latest
+          image: 192.168.1.100/k8s/eureka:latest
           ports:
             - containerPort: 7000
               protocol: TCP
