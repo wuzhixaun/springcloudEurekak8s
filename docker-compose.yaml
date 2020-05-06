@@ -14,7 +14,7 @@ services:
     ports:
       - "14000:14000"
     environment:
-      - APP_OPTS=--registerWithEureka=true --fetchRegistry=true --eureka.instance.preferIpAddress=true --eureka.client.serviceUrl.defaultZone=http://${HOST_IP}:7000/eureka/
+      - APP_OPTS=--registerWithEureka=true --fetchRegistry=true --eureka.instance.preferIpAddress=true --eureka.instance.ipAddress=${HOST_IP} --eureka.client.serviceUrl.defaultZone=http://${HOST_IP}:7000/eureka/
     networks:
       - cloud
     # 使用links的时候，defaultZone: http://eureka-server:${server.port}/eureka/
@@ -28,7 +28,7 @@ services:
     ports:
       - "15000:15000"
     environment:
-      - APP_OPTS=--registerWithEureka=true --fetchRegistry=true --eureka.instance.preferIpAddress=true --eureka.client.serviceUrl.defaultZone=http://${HOST_IP}:7000/eureka/
+      - APP_OPTS=--registerWithEureka=true --fetchRegistry=true --eureka.instance.preferIpAddress=true --eureka.instance.ipAddress=${HOST_IP} --eureka.client.serviceUrl.defaultZone=http://${HOST_IP}:7000/eureka/
     networks:
       - cloud
     # 使用links的时候，defaultZone: http://eureka-server:${server.port}/eureka/
