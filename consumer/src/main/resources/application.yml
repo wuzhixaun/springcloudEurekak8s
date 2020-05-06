@@ -12,5 +12,10 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      #defaultZone: http://eureka-0.eureka.default.svc.cluster.local:7000/eureka/,http://eureka-1.eureka.default.svc.cluster.local:7000/eureka/,http://eureka-2.eureka.default.svc.cluster.local:7000/eureka/
+      # 本地开发
       defaultZone: http://localhost:7000/eureka/
+      # docker-compose
+      #defaultZone: http://eureka-server:${server.port}/eureka/
+      # k8s
+      #defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      #defaultZone: http://eureka-0.eureka.default.svc.cluster.local:7000/eureka/,http://eureka-1.eureka.default.svc.cluster.local:7000/eureka/,http://eureka-2.eureka.default.svc.cluster.local:7000/eureka/

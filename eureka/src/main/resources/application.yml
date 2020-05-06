@@ -16,7 +16,11 @@ eureka:
     eviction-interval-timer-in-ms: 5000
   client:
     service-url:
+      # 本地开发
       defaultZone: http://localhost:7000/eureka/
+      # docker-compose
+      #defaultZone: http://eureka-server:${server.port}/eureka/
+      # k8s
       #defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
     # 是否从eureka上获取注册信息

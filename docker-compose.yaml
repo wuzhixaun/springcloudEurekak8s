@@ -5,7 +5,7 @@ services:
     ports:
       - "7000:7000"
     environment:
-      - APP_OPTS=--eureka.instance.hostname=eureka-server --eureka.instance.preferIpAddress=true --eureka.client.serviceUrl.defaultZone=http://eureka-server:7000/eureka/
+      - APP_OPTS=--eureka.instance.hostname=eureka-server --eureka.instance.preferIpAddress=true --eureka.client.serviceUrl.defaultZone=http://${HOST_IP}:7000/eureka/
     networks:
       - cloud
 
@@ -14,9 +14,12 @@ services:
     ports:
       - "14000:14000"
     environment:
-      - APP_OPTS=--registerWithEureka=true --fetchRegistry=true --eureka.instance.preferIpAddress=true --eureka.client.serviceUrl.defaultZone=http://eureka-server:7000/eureka/
+      - APP_OPTS=--registerWithEureka=true --fetchRegistry=true --eureka.instance.preferIpAddress=true --eureka.client.serviceUrl.defaultZone=http://${HOST_IP}:7000/eureka/
     networks:
       - cloud
+    # 使用links的时候，defaultZone: http://eureka-server:${server.port}/eureka/
+    #links:
+    #  - eureka-server
     depends_on:
       - eureka-server
 
@@ -25,9 +28,12 @@ services:
     ports:
       - "15000:15000"
     environment:
-      - APP_OPTS=--registerWithEureka=true --fetchRegistry=true --eureka.instance.preferIpAddress=true --eureka.client.serviceUrl.defaultZone=http://eureka-server:7000/eureka/
+      - APP_OPTS=--registerWithEureka=true --fetchRegistry=true --eureka.instance.preferIpAddress=true --eureka.client.serviceUrl.defaultZone=http://${HOST_IP}:7000/eureka/
     networks:
       - cloud
+    # 使用links的时候，defaultZone: http://eureka-server:${server.port}/eureka/
+    #links:
+    #  - eureka-server
     depends_on:
       - eureka-server
 
