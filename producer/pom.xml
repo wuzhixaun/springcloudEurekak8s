@@ -49,6 +49,30 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <!-- docker的maven插件，官网：https://github.com/spotify/docker-maven-plugin -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <!-- Docker服务地址 -->
+                    <dockerHost>http://192.168.1.101:6030</dockerHost>
+                    <!-- 镜像名 -->
+                    <imageName>${project.artifactId}</imageName>
+                    <!-- Dockerfile文件地址 -->
+                    <!--<dockerDirectory>src/main/docker</dockerDirectory>-->
+                    <dockerDirectory>/</dockerDirectory>
+                    <imageTags>1.0</imageTags>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
