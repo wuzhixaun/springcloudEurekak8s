@@ -1,0 +1,11 @@
+[
+  {
+    "targets": [
+      "192.168.1.100:14000"
+    ],
+    "labels": {
+      "instance": "k8s-producer",
+      "service": "k8s-producer-service"
+    }
+  }
+]

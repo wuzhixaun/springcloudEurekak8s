@@ -1,0 +1,61 @@
+spring:
+  profiles:
+    active: dev
+
+
+---
+spring:
+  application:
+    name: eureka-peer
+  profiles: dev
+
+server:
+  port: 10000
+
+eureka:
+  instance:
+    hostname: dev
+  client:
+    # 是否将自己注册到eureka-server服务中，默认为true
+    fetch-registry: true
+    # 是否从eureka-server获取注册信息，默认为ture
+    register-with-eureka: true
+    # 注册中心地址
+    service-url:
+      defaultZone: http://localhost:10000/eureka/,http://localhost:10001/eureka/,http://localhost:10002/eureka/
+---
+spring:
+  application:
+    name: eureka-peer1
+  profiles: dev1
+
+server:
+  port: 10001
+
+eureka:
+  instance:
+    hostname: dev1
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:10000/eureka/,http://localhost:10001/eureka/,http://localhost:10002/eureka/
+---
+spring:
+  application:
+    name: eureka-peer2
+  profiles: dev2
+
+server:
+  port: 10002
+
+eureka:
+  instance:
+    hostname: dev2
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:10000/eureka/,http://localhost:10001/eureka/,http://localhost:10002/eureka/
+
+---

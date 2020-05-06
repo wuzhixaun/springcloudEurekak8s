@@ -15,3 +15,14 @@ eureka:
       defaultZone: http://localhost:7000/eureka/
       #defaultZone: http://eureka-0.eureka.default.svc.cluster.local:7000/eureka/,http://eureka-1.eureka.default.svc.cluster.local:7000/eureka/,http://eureka-2.eureka.default.svc.cluster.local:7000/eureka/
       #defaultZone: http://eureka.k8s.com/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        # 将 Actuator 的 /actuator/prometheus 端点暴露出来
+        include: 'prometheus'
+  metrics:
+    tags:
+      # 将应用名称添加到计量器的 tag 中去以便 Prometheus 根据应用名区分不同服务
+      application: ${spring.application.name}
