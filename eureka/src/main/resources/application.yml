@@ -11,7 +11,7 @@ eureka:
     prefer-ip-address: false
   server:
     # eureka默认开启自我保护模式，导致已经不存在的实例还是会显示再eureka上，并继续提供服务。关闭方法如下
-    enable-self-preservation: true
+    enable-self-preservation: false
     #5秒清理一次，eureka会在一段时间内没有接收到心跳，就删除注册的实例
     eviction-interval-timer-in-ms: 5000
   client:
