@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.study</groupId>
-    <artifactId>springcloudk8s</artifactId>
+    <artifactId>springcloudEurekak8s</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <description>Spring Cloud部署到k8s示例</description>

@@ -4,12 +4,12 @@ spring:
   cloud:
     config:
       server:
-        git:
-          #uri: https://github.com/xiaochunping/springcloudk8scfg.git
-          uri: https://gitee.com/xcp_allen/springcloudk8scfg.git
-          search-paths: config-repo
+        native:
+          search-locations: /config
+  profiles:
+    active: native #设置为本地config
 server:
-  port: 12000
+  port: 80
 eureka:
   instance:
     #以IP注册进eureka,不以ID注册
@@ -19,5 +19,5 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://eureka-0.eureka.default.svc.cluster.local:7000/eureka/,http://eureka-1.eureka.default.svc.cluster.local:7000/eureka/,http://eureka-2.eureka.default.svc.cluster.local:7000/eureka/
-      #defaultZone: http://localhost:7000/eureka/
+      defaultZone: http://eureka.default.svc.cluster.local/eureka/
+      #defaultZone: http://localhost:8080/eureka/

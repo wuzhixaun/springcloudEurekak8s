@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: config
+  #设置滚动升级策略
+  #Kubernetes在等待设置的时间后才开始进行升级，例如5秒
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      #升级过程中Deployment控制器最多可以删除多少个旧Pod，主要用于提供缓冲时间
+      maxUnavailable: 1
+      #升级过程中最多可以比原先设置多出的Pod数量
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: config
+    spec:
+      volumes:
+        - name: config
+          configMap:
+            name: config
+      restartPolicy: Always
+      containers:
+        - name: config
+          image: registry.cn-shenzhen.aliyuncs.com/wuzhixuan/config
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /config
+              name: config
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: config
+  namespace: default
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      name: config
+      nodePort: 30016
+  selector:
+    app: config

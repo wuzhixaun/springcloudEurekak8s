@@ -2,7 +2,7 @@ spring:
   application:
     name: config-client
 server:
-  port: 13000
+  port: 80
 management:
   endpoints:
     web:

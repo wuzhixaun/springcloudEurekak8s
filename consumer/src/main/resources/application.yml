@@ -2,7 +2,7 @@ spring:
   application:
     name: consumer
 server:
-  port: 15000
+  port: 80
 eureka:
   instance:
     #以IP注册进eureka,不以ID注册
@@ -13,9 +13,8 @@ eureka:
     fetch-registry: true
     service-url:
       # 本地开发
-      defaultZone: http://localhost:7000/eureka/
+      #defaultZone: http://localhost:8080/eureka/
       # docker-compose
       #defaultZone: http://eureka-server:${server.port}/eureka/
       # k8s
-      #defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-      #defaultZone: http://eureka-0.eureka.default.svc.cluster.local:7000/eureka/,http://eureka-1.eureka.default.svc.cluster.local:7000/eureka/,http://eureka-2.eureka.default.svc.cluster.local:7000/eureka/
+      defaultZone: http://eureka.default.svc.cluster.local/eureka/

@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-client
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: config-client
+  #设置滚动升级策略
+  #Kubernetes在等待设置的时间后才开始进行升级，例如5秒
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      #升级过程中Deployment控制器最多可以删除多少个旧Pod，主要用于提供缓冲时间
+      maxUnavailable: 1
+      #升级过程中最多可以比原先设置多出的Pod数量
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: config-client
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: config-client
+          image: registry.cn-shenzhen.aliyuncs.com/wuzhixuan/config-client
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              protocol: TCP
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-client
+  namespace: default
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      name: config-client
+      nodePort: 30017
+  selector:
+    app: config-client

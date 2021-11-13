@@ -1,12 +1,13 @@
-FROM openjdk:8
-MAINTAINER allen xcp.email@gmail.com
+FROM anapsix/alpine-java:8_server-jre_unlimited
 
-VOLUME /tmp
-COPY target/*.jar app.jar
+MAINTAINER jackWu <wuzhixuano@qq.com>
 
-# 设置时区
-ENV JAVA_OPTS="-Duser.timezone=Asia/Shanghai -Djava.security.egd=file:/dev/./urandom"
-EXPOSE 14000
-ENV APP_OPTS=""
-# ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
-ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar /app.jar $APP_OPTS"]
+RUN mkdir -p /producer
+
+WORKDIR /producer
+
+EXPOSE 80
+
+COPY ./target/producer-1.0-SNAPSHOT.jar ./app.jar
+
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "app.jar"]

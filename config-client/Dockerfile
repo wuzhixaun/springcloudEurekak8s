@@ -1,6 +1,13 @@
-FROM openjdk:8
-MAINTAINER allen xcp.email@gmail.com
-VOLUME /tmp
-ADD target/config-client-1.0-SNAPSHOT.jar app.jar
-#RUN bash -c 'touch /app.jar'
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+FROM anapsix/alpine-java:8_server-jre_unlimited
+
+MAINTAINER jackWu <wuzhixuano@qq.com>
+
+RUN mkdir -p /config-client
+
+WORKDIR /config-client
+
+EXPOSE 80
+
+COPY ./target/config-client-1.0-SNAPSHOT.jar ./app.jar
+
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "app.jar"]

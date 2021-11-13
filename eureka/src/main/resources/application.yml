@@ -1,13 +1,13 @@
 server:
-  port: 7000
+  port: 80
 
-#spring:
-#  application:
-#    name: eureka
+spring:
+  application:
+    name: eureka
 
 eureka:
   instance:
-#    appname: ${spring.application.name}
+    appname: ${spring.application.name}
     prefer-ip-address: false
   server:
     # eureka默认开启自我保护模式，导致已经不存在的实例还是会显示再eureka上，并继续提供服务。关闭方法如下
@@ -17,11 +17,11 @@ eureka:
   client:
     service-url:
       # 本地开发
-      defaultZone: http://localhost:7000/eureka/
+      #defaultZone: http://localhost:7000/eureka/
       # docker-compose
       #defaultZone: http://eureka-server:${server.port}/eureka/
       # k8s
-      #defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://eureka.default.svc.cluster.local/eureka/
 
     # 是否从eureka上获取注册信息
     fetch-registry: false
