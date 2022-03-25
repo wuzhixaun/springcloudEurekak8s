@@ -1,4 +1,4 @@
-# Spring Cloud Eureka 部署到k8s示例里面设计
+# Spring Cloud Eureka 部署到k8s示例里面落地时间
 里面springcloud config结合 k8s configmap 挂在配置
 
 
